@@ -40,7 +40,7 @@ fn run_simulation(addr:Option<u64>) -> u64{
                 println!("fault injected: skip {} ", address);
                 emu.reg_write(RegisterARM::PC, address + size as u64).unwrap();
             }   
-        });
+        }).expect("Hook failed");
     };
 
         emu.emu_start(0x1000, 0x1008, 10 * SECOND_SCALE, 2)
